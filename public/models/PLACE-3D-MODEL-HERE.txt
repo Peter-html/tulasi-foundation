@@ -1,0 +1,8 @@
+Place your downloaded AI/GLB model here and rename it exactly:
+
+concept-villa.glb
+
+Final path:
+public/models/concept-villa.glb
+
+The interactive viewer is configured for an approximately 180-degree horizontal orbit and exterior zoom.

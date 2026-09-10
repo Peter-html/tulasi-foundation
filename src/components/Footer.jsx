@@ -1,47 +1,35 @@
 import React from 'react';
-import { Facebook, Twitter, Linkedin } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
-const Footer = () => {
-  const logoUrl = 'https://i.postimg.cc/MHHy3Zzx/Screenshot-2025-11-08-at-12-30-53-PM.png';
-
-  return (
-    <footer className="bg-brand-dark text-white">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-          {/* Logo and Brand */}
-          <div>
-            <div className="flex justify-center md:justify-start mb-4">
-              <img src={logoUrl} alt="Tulasi Foundation Logo" className="h-12 w-auto" />
-            </div>
-            <p className="text-gray-400">Building dreams, one home at a time.</p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="/#about" className="hover:text-brand-green transition-colors">About Us</a></li>
-              <li><a href="/projects" className="hover:text-brand-green transition-colors">Projects</a></li>
-              <li><a href="/#services" className="hover:text-brand-green transition-colors">Services</a></li>
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
-            <div className="flex justify-center md:justify-start space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white"><Facebook size={24} /></a>
-              <a href="#" className="text-gray-400 hover:text-white"><Twitter size={24} /></a>
-              <a href="#" className="text-gray-400 hover:text-white"><Linkedin size={24} /></a>
-            </div>
-          </div>
+const Footer = () => (
+  <footer className="bg-[#dce8dd] px-6 pb-8 pt-16 text-[#102c1c] md:px-10 lg:px-14">
+    <div className="mx-auto max-w-[1500px]">
+      <div className="grid gap-12 border-b border-[#102c1c]/15 pb-14 md:grid-cols-[1.2fr_.8fr]">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#1d6b3e]">Tulasi Foundation</p>
+          <p className="font-display mt-5 max-w-3xl text-[clamp(3rem,6vw,6rem)] font-light leading-[0.92] tracking-[-0.055em]">Plots, villas and apartments shaped around everyday life.</p>
         </div>
-        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Tulasi Foundation. All Rights Reserved.</p>
+        <div className="grid grid-cols-2 gap-8 md:justify-self-end">
+          <div>
+            <p className="mb-4 text-[10px] uppercase tracking-[0.2em] text-[#748078]">Explore</p>
+            <div className="space-y-2 text-sm">
+              <a className="block hover:text-[#1d6b3e]" href="/projects">Projects</a>
+              <a className="block hover:text-[#1d6b3e]" href="/#about">About</a>
+              <a className="block hover:text-[#1d6b3e]" href="/#living">Living</a>
+            </div>
+          </div>
+          <div>
+            <p className="mb-4 text-[10px] uppercase tracking-[0.2em] text-[#748078]">Contact</p>
+            <a className="inline-flex items-center gap-2 text-sm hover:text-[#1d6b3e]" href="/#contact">Enquire <ArrowUpRight size={14} /></a>
+          </div>
         </div>
       </div>
-    </footer>
-  );
-};
+      <div className="flex flex-col gap-3 py-6 text-xs text-[#748078] sm:flex-row sm:items-center sm:justify-between">
+        <span>© {new Date().getFullYear()} Tulasi Foundation</span>
+        <span>Designed for a calmer way to explore real estate.</span>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

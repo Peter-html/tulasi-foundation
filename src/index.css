@@ -1,3 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #102c1c;
+  background: #f7f4ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #f7f4ed;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f7f4ed;
+  color: #102c1c;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #1d6b3e;
+  color: #fff;
+}
+
+img,
+video {
+  display: block;
+}
+
+.font-display {
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.arch-grid {
+  background-image:
+    linear-gradient(rgba(16, 44, 28, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 44, 28, 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.text-balance {
+  text-wrap: balance;
+}

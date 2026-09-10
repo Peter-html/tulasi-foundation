@@ -1,91 +1,63 @@
 import React from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
-
-const ContactInfoCard = ({ icon, title, lines }) => (
-  <div className="flex items-start space-x-4">
-    <div className="flex-shrink-0">
-      {icon}
-    </div>
-    <div>
-      <h3 className="font-bold text-sm uppercase tracking-wider text-gray-800">{title}</h3>
-      {lines.map((line, index) => (
-        <p key={index} className="text-gray-600 break-words">{line}</p>
-      ))}
-    </div>
-  </div>
-);
+import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react';
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark">Get In Touch</h2>
-            <p className="text-gray-600 mt-2 max-w-2xl mx-auto">We'd love to hear from you. Please fill out the form below or contact us through one of our channels.</p>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          
-          {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg shadow-xl order-2 lg:order-1">
-            <h3 className="text-2xl font-bold text-brand-dark mb-6">Send us a Message</h3>
-            <form>
-              <div className="mb-4">
-                <input 
-                  type="text" 
-                  placeholder="Enter your Name"
-                  className="w-full p-3 bg-gray-100 border border-gray-200 rounded-md text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-green"
-                />
-              </div>
-              <div className="mb-4">
-                <input 
-                  type="email" 
-                  placeholder="Enter a valid email address"
-                  className="w-full p-3 bg-gray-100 border border-gray-200 rounded-md text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-green"
-                />
-              </div>
-              <div className="mb-6">
-                <textarea 
-                  placeholder="Enter your message" 
-                  rows="4"
-                  className="w-full p-3 bg-gray-100 border border-gray-200 rounded-md text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-green"
-                ></textarea>
-              </div>
+    <section id="contact" className="bg-[#dce8dd] px-4 py-4 md:px-6 md:py-6">
+      <div className="mx-auto max-w-[1560px] overflow-hidden rounded-[34px] bg-[#163a25] text-white">
+        <div className="grid lg:grid-cols-[1.08fr_.92fr]">
+          <div className="p-7 md:p-12 lg:p-16 xl:p-20">
+            <p className="mb-7 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#a9d4b5]">04 · Start a conversation</p>
+            <h2 className="font-display max-w-4xl text-[clamp(3.5rem,7vw,7rem)] font-light leading-[0.88] tracking-[-0.06em]">See the project. Feel the place.</h2>
+            <p className="mt-8 max-w-xl text-base leading-7 text-white/60">Tell us what you are looking for and our team can help with project details, availability and a site visit.</p>
+
+            <div className="mt-14 grid gap-6 border-t border-white/15 pt-8 sm:grid-cols-3">
+              <a href="tel:+919443349064" className="group">
+                <Phone size={18} className="mb-3 text-[#a9d4b5]" />
+                <p className="text-[10px] uppercase tracking-[0.2em] text-white/35">Call</p>
+                <p className="mt-1 text-sm group-hover:text-[#a9d4b5]">+91 94433 49064</p>
+              </a>
+              <a href="mailto:contact@tulasifoundation.com" className="group">
+                <Mail size={18} className="mb-3 text-[#a9d4b5]" />
+                <p className="text-[10px] uppercase tracking-[0.2em] text-white/35">Email</p>
+                <p className="mt-1 break-all text-sm group-hover:text-[#a9d4b5]">contact@tulasifoundation.com</p>
+              </a>
               <div>
-                <button 
-                  type="submit"
-                  className="w-full sm:w-auto px-8 py-3 bg-brand-green text-white font-bold uppercase tracking-wider rounded-md hover:bg-brand-dark transition-colors"
-                >
-                  Submit
-                </button>
+                <MapPin size={18} className="mb-3 text-[#a9d4b5]" />
+                <p className="text-[10px] uppercase tracking-[0.2em] text-white/35">Office</p>
+                <p className="mt-1 text-sm">Nagercoil · Tamil Nadu</p>
               </div>
+            </div>
+          </div>
+
+          <div className="bg-[#fffdf8] p-7 text-[#102c1c] md:p-12 lg:p-16">
+            <p className="mb-7 text-sm font-semibold">Schedule a site visit</p>
+            <form className="space-y-7" onSubmit={(e) => e.preventDefault()}>
+              {[
+                ['Name', 'Your name', 'text'],
+                ['Phone', '+91', 'tel'],
+                ['Email', 'you@example.com', 'email'],
+              ].map(([label, placeholder, type]) => (
+                <label key={label} className="block border-b border-[#102c1c]/18 pb-3">
+                  <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6e7a72]">{label}</span>
+                  <input type={type} placeholder={placeholder} className="w-full bg-transparent text-lg outline-none placeholder:text-[#102c1c]/25" />
+                </label>
+              ))}
+              <label className="block border-b border-[#102c1c]/18 pb-3">
+                <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6e7a72]">Interested in</span>
+                <select className="w-full appearance-none bg-transparent text-lg outline-none">
+                  <option>Limelight</option>
+                  <option>Project 02</option>
+                  <option>Project 03</option>
+                  <option>Project 04</option>
+                </select>
+              </label>
+              <button type="submit" className="mt-4 flex w-full items-center justify-between rounded-full bg-[#1d6b3e] px-6 py-4 font-semibold text-white transition-colors hover:bg-[#102c1c]">
+                Send enquiry <ArrowUpRight size={18} />
+              </button>
+              <p className="text-xs leading-5 text-[#7a857e]">Demo form only. Backend submission can be connected when the API is ready.</p>
             </form>
           </div>
-
-          {/* Info Cards Grid */}
-          <div className="space-y-8 order-1 lg:order-2">
-             <div className="bg-white p-6 shadow-lg rounded-lg">
-                <ContactInfoCard 
-                  icon={<MapPin className="h-8 w-8 text-brand-green" />}
-                  title="Our Main Office"
-                  lines={['No-21, Sargunavethi, West colony', 'Nagercoil - 629 001']}
-                />
-              </div>
-              <div className="bg-white p-6 shadow-lg rounded-lg">
-                <ContactInfoCard 
-                  icon={<Phone className="h-8 w-8 text-brand-green" />}
-                  title="Phone Number"
-                  lines={['+91 9443349064']}
-                />
-              </div>
-              <div className="bg-white p-6 shadow-lg rounded-lg">
-                <ContactInfoCard 
-                  icon={<Mail className="h-8 w-8 text-brand-green" />}
-                  title="Email"
-                  lines={['contact@tulasifoundation.com']}
-                />
-              </div>
-          </div>
-
         </div>
       </div>
     </section>
