@@ -18,16 +18,44 @@ const Hero = ({ playVideo = true }) => {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video) return undefined;
+
+    video.muted = true;
+    video.defaultMuted = true;
+
+    const startPlayback = () => {
+      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise?.catch) {
+        playPromise.catch(() => {});
+      }
+    };
 
     if (playVideo) {
-      video.currentTime = 0;
-      const playPromise = video.play();
-      if (playPromise?.catch) playPromise.catch(() => {});
+      if (video.readyState >= 2) {
+        startPlayback();
+      } else {
+        video.addEventListener('loadeddata', startPlayback, { once: true });
+        video.addEventListener('canplay', startPlayback, { once: true });
+      }
+      startPlayback();
     } else {
       video.pause();
-      video.currentTime = 0;
     }
+
+    const handleFocus = () => {
+      if (playVideo && video.paused) {
+        startPlayback();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    document.addEventListener('visibilitychange', handleFocus);
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      document.removeEventListener('visibilitychange', handleFocus);
+    };
   }, [playVideo]);
 
   return (
@@ -37,11 +65,15 @@ const Hero = ({ playVideo = true }) => {
     >
       <motion.video
         ref={videoRef}
+        autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
-        poster="/projects/limelight/limelight-2.webp"
+        preload="auto"
+        onLoadedData={(e) => {
+          e.currentTarget.muted = true;
+          if (playVideo) e.currentTarget.play().catch(() => {});
+        }}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ y: videoY, scale: videoScale }}
       >

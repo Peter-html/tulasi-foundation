@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ScrollToTop from './components/ScrollToTop';
 import ProjectsListPage from './pages/ProjectsListPage';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/projects" element={<ProjectsListPage />} />
         <Route path="/project/:projectId" element={<ProjectDetailPage />} />
       </Routes>
+      <ChatBot />
     </>
   );
 }

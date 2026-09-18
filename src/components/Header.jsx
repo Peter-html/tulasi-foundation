@@ -37,7 +37,7 @@ const Header = () => {
       >
         <Link to="/" className={`flex items-center gap-3 ${text}`}>
           <span className={`grid h-9 w-9 place-items-center rounded-full ${solid ? 'bg-[#eef2ec]' : 'bg-white'}`}>
-            <img src="/tulasi-logo-green.svg" alt="" className="h-6 w-6" />
+            <img src="/tulasi-logo-icon.png" alt="Tulasi Foundation" className="h-6 w-6 object-contain" />
           </span>
           <span className="leading-none">
             <span className="block text-[13px] font-semibold tracking-[0.22em]">TULASI</span>

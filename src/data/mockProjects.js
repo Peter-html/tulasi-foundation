@@ -18,7 +18,8 @@ export const mockProjects = [
     previewVideo: '/videos/projects/project-1-preview.mp4',
     sideImage: '/projects/limelight/limelight-4.webp',
     priceRange: 'Enquire for details',
-    status: 'Featured Project',
+    status: 'Ongoing',
+    category: 'ongoing',
     galleryImages: [
       '/projects/limelight/limelight-1.webp',
       '/projects/limelight/limelight-2.webp',
@@ -68,7 +69,8 @@ export const mockProjects = [
     previewVideo: '/videos/projects/project-2-preview.mp4',
     sideImage: '/projects/project-02/side.webp',
     priceRange: 'Enquire for details',
-    status: 'Upcoming',
+    status: 'Ongoing',
+    category: 'ongoing',
 
     // Optional interactive concept model. This is an illustrative design example,
     // not an actual completed Tulasi villa.
@@ -106,6 +108,7 @@ export const mockProjects = [
     sideImage: '/projects/project-03/side.webp',
     priceRange: 'Enquire for details',
     status: 'Upcoming',
+    category: 'upcoming',
     galleryImages: [
       '/projects/project-03/gallery-1.webp',
       '/projects/project-03/gallery-2.webp',
@@ -136,8 +139,37 @@ export const mockProjects = [
     sideImage: '/projects/project-04/project-4-cover.webp',
 
     priceRange: 'Enquire for details',
-    status: 'Upcoming',
+    status: 'Completed',
+    category: 'completed',
     galleryImages: ['/projects/project-04/project-4-cover.webp'],
+    floorPlanImages: [],
+    surroundingFeatures: {},
+  },
+  {
+    id: 'project-05',
+    name: 'Tulasi Enclave',
+    location: 'Tamil Nadu',
+    projectType: 'Masterplanned Villas',
+    totalArea: '15 Acres',
+    units: '48 Units Completed',
+    approval: 'DTCP & RERA Approved',
+    plotPrice: 'Delivered',
+    villaPrice: 'Delivered',
+    loan: 'Approved by major banks',
+    shortDescription:
+      'A hillside masterplanned community delivered with landscaped avenues, modern villa construction, and scenic mountain views.',
+    description:
+      'Tulasi Enclave represents our completed vision of harmonious hillside living, where civil engineering precision meets natural serenity.',
+    coverImage: '/photos/project.png',
+    sideImage: '/photos/project.png',
+    priceRange: 'Completed & Handed Over',
+    status: 'Completed',
+    category: 'completed',
+    galleryImages: [
+      '/photos/project.png',
+      '/projects/limelight/limelight-1.webp',
+      '/projects/limelight/limelight-2.webp',
+    ],
     floorPlanImages: [],
     surroundingFeatures: {},
   },
