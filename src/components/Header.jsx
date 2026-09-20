@@ -50,7 +50,7 @@ const Header = () => {
     }
   };
 
-  const handleLogoClick = (e) => {
+  const handleHomeClick = (e) => {
     setOpen(false);
     if (onHome) {
       e.preventDefault();
@@ -72,7 +72,7 @@ const Header = () => {
         {/* Brand Logo - Navigates to / */}
         <Link
           to="/"
-          onClick={handleLogoClick}
+          onClick={handleHomeClick}
           className={`flex items-center gap-3 ${text} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-full`}
         >
           <span
@@ -88,12 +88,22 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden items-center gap-8 lg:flex">
+        {/* Navigation - Visible on half-screen, tablet and desktop (sm and up) */}
+        <div className="hidden items-center gap-3 sm:flex md:gap-6 lg:gap-8">
+          <Link
+            to="/"
+            onClick={handleHomeClick}
+            className={`text-xs sm:text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text} ${
+              onHome ? 'font-semibold underline underline-offset-8 decoration-[#1d6b3e]' : ''
+            }`}
+          >
+            Home
+          </Link>
+
           <Link
             to="/projects"
             onClick={() => setOpen(false)}
-            className={`text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text} ${
+            className={`text-xs sm:text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text} ${
               location.pathname === '/projects' ? 'font-semibold underline underline-offset-8 decoration-[#1d6b3e]' : ''
             }`}
           >
@@ -103,7 +113,7 @@ const Header = () => {
           <Link
             to="/about"
             onClick={() => setOpen(false)}
-            className={`text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text} ${
+            className={`text-xs sm:text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text} ${
               location.pathname === '/about' ? 'font-semibold underline underline-offset-8 decoration-[#1d6b3e]' : ''
             }`}
           >
@@ -113,18 +123,33 @@ const Header = () => {
           <a
             href={onHome ? '#living' : '/#living'}
             onClick={handleLivingClick}
-            className={`text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text}`}
+            className={`text-xs sm:text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text}`}
           >
             Living
           </a>
         </div>
 
-        {/* Enquire CTA & Mobile Toggle */}
+        {/* Action Controls & Mobile Toggle */}
         <div className="flex items-center gap-2">
+          {/* Quick-switch button visible on narrow mobile (<sm) to effortlessly jump between Home and Projects */}
+          <Link
+            to={onHome ? '/projects' : '/'}
+            onClick={() => setOpen(false)}
+            className={`flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold transition-all sm:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] ${
+              solid
+                ? 'bg-[#102c1c] text-white hover:bg-[#1d6b3e]'
+                : 'bg-white text-[#102c1c] hover:bg-[#edf6ef]'
+            }`}
+          >
+            <span>{onHome ? 'Projects' : 'Home'}</span>
+            {onHome && <ArrowUpRight size={13} />}
+          </Link>
+
+          {/* Enquire CTA */}
           <a
             href={onHome ? '#contact' : '/#contact'}
             onClick={handleEnquireClick}
-            className={`hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all sm:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] ${
+            className={`hidden items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all sm:flex md:px-5 md:py-2.5 md:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] ${
               solid
                 ? 'bg-[#102c1c] text-white hover:bg-[#1d6b3e]'
                 : 'bg-white text-[#102c1c] hover:bg-[#edf6ef]'
@@ -132,19 +157,21 @@ const Header = () => {
           >
             Enquire <ArrowUpRight size={15} />
           </a>
+
+          {/* Hamburger Menu Toggle (visible on tablet & mobile) */}
           <button
-            className={`grid h-10 w-10 place-items-center rounded-full lg:hidden ${
+            className={`grid h-9 w-9 place-items-center rounded-full sm:h-10 sm:w-10 lg:hidden ${
               solid ? 'bg-[#eef2ec] text-[#102c1c]' : 'bg-white/15 text-white'
             } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e]`}
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            {open ? <X size={20} /> : <Menu size={20} />}
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Drawer */}
+      {/* Responsive Menu Drawer */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -154,6 +181,17 @@ const Header = () => {
             className="mx-auto mt-2 max-w-[1500px] rounded-[28px] bg-[#fffdf8] p-6 shadow-2xl lg:hidden"
           >
             <div className="flex flex-col">
+              <Link
+                to="/"
+                onClick={handleHomeClick}
+                className={`border-b border-black/10 py-4 text-2xl font-medium text-[#102c1c] flex items-center justify-between ${
+                  onHome ? 'font-bold text-[#1d6b3e]' : ''
+                }`}
+              >
+                <span>Home</span>
+                <ArrowUpRight size={20} className="opacity-40" />
+              </Link>
+
               <Link
                 to="/projects"
                 onClick={() => setOpen(false)}
