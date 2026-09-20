@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import AboutUsSection from '../components/AboutUsSection';
+import AboutTeaserSection from '../components/AboutTeaserSection';
 import ServicesSection from '../components/ServicesSection';
-import ProjectsSection from '../components/ProjectsSection';
+import FeaturedProjectsSection from '../components/FeaturedProjectsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import Preloader from '../components/Preloader';
@@ -19,6 +19,10 @@ const HomePage = () => {
       return true;
     }
   });
+
+  useEffect(() => {
+    document.title = 'Tulasi Foundation';
+  }, []);
 
   const finishIntro = useCallback(() => {
     try {
@@ -39,16 +43,26 @@ const HomePage = () => {
         <Header />
 
         <main>
+          {/* 1. Hero Video */}
           <Hero playVideo={!showIntro} />
-          <AboutUsSection />
+
+          {/* 2. Small About Teaser */}
+          <AboutTeaserSection />
+
+          {/* 3. Living / Services */}
           <ServicesSection />
-          <ProjectsSection />
+
+          {/* 4. Featured Projects Teaser */}
+          <FeaturedProjectsSection />
+
+          {/* 5. Contact / Enquire */}
           <ContactSection />
         </main>
 
         <Footer />
       </motion.div>
 
+      {/* Opening Animation Preloader */}
       <AnimatePresence mode="wait">
         {showIntro && <Preloader key="tulasi-intro" onFinish={finishIntro} />}
       </AnimatePresence>

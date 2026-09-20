@@ -3,23 +3,23 @@ import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const items = [
-  { no: '01', title: 'Plots', copy: 'Clear layouts, real aerial context and information designed to make site selection simpler.' },
-  { no: '02', title: 'Villas', copy: 'Architectural living with space for exterior showcases, galleries and future interactive 3D experiences.' },
-  { no: '03', title: 'Apartments', copy: 'Project stories that connect architecture, neighbourhood and everyday convenience in one flow.' },
+  { no: '01', title: 'Plots', copy: 'Approved residential plots in prime Tamil Nadu locations with clear titles, wide internal roads and verified documentation.' },
+  { no: '02', title: 'Villas', copy: 'Individual homes designed around generous natural light, private garden space and flexible architectural planning.' },
+  { no: '03', title: 'Apartments', copy: 'Thoughtfully planned apartment communities close to schools, healthcare and daily conveniences.' },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="living" className="bg-[#102c1c] px-6 py-24 text-white md:px-10 md:py-32 lg:px-14">
+    <section id="living" className="scroll-mt-28 md:scroll-mt-32 bg-[#102c1c] px-6 py-24 text-white md:px-10 md:py-32 lg:px-14">
       <div className="mx-auto max-w-[1500px]">
         <div className="mb-14 flex flex-col justify-between gap-8 border-b border-white/15 pb-10 md:flex-row md:items-end">
           <div>
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#a9d4b5]">02 · What we create</p>
+            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#a9d4b5]">02 · WHAT WE OFFER</p>
             <h2 className="font-display max-w-4xl text-[clamp(3rem,6vw,6.2rem)] font-light leading-[0.9] tracking-[-0.055em]">
               Three ways to find your place.
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-white/55">A quieter, more editorial presentation inspired by contemporary architecture and destination websites.</p>
+          <p className="max-w-sm text-sm leading-6 text-white/70">Carefully selected locations and practical layouts built for long-term living and lasting value.</p>
         </div>
 
         <div className="divide-y divide-white/15">
