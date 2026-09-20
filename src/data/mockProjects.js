@@ -20,6 +20,7 @@ export const mockProjects = [
     priceRange: 'Enquire for details',
     status: 'Ongoing',
     category: 'ongoing',
+    statusCategory: 'ongoing',
     galleryImages: [
       '/projects/limelight/limelight-1.webp',
       '/projects/limelight/limelight-2.webp',
@@ -71,6 +72,7 @@ export const mockProjects = [
     priceRange: 'Enquire for details',
     status: 'Ongoing',
     category: 'ongoing',
+    statusCategory: 'ongoing',
 
     // Optional interactive concept model. This is an illustrative design example,
     // not an actual completed Tulasi villa.
@@ -109,6 +111,7 @@ export const mockProjects = [
     priceRange: 'Enquire for details',
     status: 'Upcoming',
     category: 'upcoming',
+    statusCategory: 'upcoming',
     galleryImages: [
       '/projects/project-03/gallery-1.webp',
       '/projects/project-03/gallery-2.webp',
@@ -141,6 +144,7 @@ export const mockProjects = [
     priceRange: 'Enquire for details',
     status: 'Completed',
     category: 'completed',
+    statusCategory: 'completed',
     galleryImages: ['/projects/project-04/project-4-cover.webp'],
     floorPlanImages: [],
     surroundingFeatures: {},

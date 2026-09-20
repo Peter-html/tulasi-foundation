@@ -61,6 +61,7 @@ const Hero = ({ playVideo = true }) => {
   return (
     <section
       ref={sectionRef}
+      id="home"
       className="relative h-[100svh] min-h-[720px] overflow-hidden bg-[#0d2116] text-white"
     >
       <motion.video
@@ -94,14 +95,14 @@ const Hero = ({ playVideo = true }) => {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: playVideo ? 1 : 0, y: playVideo ? 0 : 18 }}
             transition={{ duration: 0.8, delay: playVideo ? 0.25 : 0 }}
-            className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em] text-white/75"
+            className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em] text-white/80"
           >
             <span className="h-px w-12 bg-white/60" />
-            Plots · Villas · Apartments
+            TULASI FOUNDATION
           </motion.div>
         </div>
 
-        <div className="grid items-end gap-8 lg:grid-cols-[1fr_360px]">
+        <div className="grid items-end gap-8 lg:grid-cols-[1fr_390px]">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: playVideo ? 1 : 0, y: playVideo ? 0 : 50 }}
@@ -110,10 +111,10 @@ const Hero = ({ playVideo = true }) => {
               delay: playVideo ? 0.35 : 0,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="font-display max-w-5xl text-[clamp(4rem,10vw,10rem)] font-light leading-[0.82] tracking-[-0.065em]"
+            className="font-display max-w-5xl text-[clamp(3.5rem,8vw,8.5rem)] font-light leading-[0.88] tracking-[-0.055em]"
           >
-            Land. Homes.
-            <span className="block pl-[8vw] text-[#d8f1dc]">Possibility.</span>
+            Plots. Villas. Apartments.
+            <span className="block text-[#d8f1dc]">Built around better living.</span>
           </motion.h1>
 
           <motion.div
@@ -122,20 +123,29 @@ const Hero = ({ playVideo = true }) => {
             transition={{ duration: 0.9, delay: playVideo ? 0.65 : 0 }}
             className="pb-3 lg:pb-6"
           >
-            <p className="max-w-sm text-sm leading-6 text-white/80 md:text-base">
-              Thoughtfully planned residential spaces, surrounded by nature and designed for better everyday living.
+            <p className="max-w-md text-sm leading-6 text-white/85 md:text-base">
+              Explore thoughtfully planned residential projects in growing locations across Tamil Nadu.
             </p>
 
-            <a
-              href="/projects"
-              className="group mt-6 inline-flex items-center gap-3 border-b border-white/40 pb-2 text-sm font-semibold transition-colors hover:border-white"
-            >
-              Explore our projects
-              <ArrowUpRight
-                size={16}
-                className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-              />
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="#projects"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#102c1c] transition-all hover:bg-[#d8f1dc] hover:scale-[1.02]"
+              >
+                Explore Projects
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-black/20 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white/15"
+              >
+                Book Site Visit
+              </a>
+            </div>
           </motion.div>
         </div>
 

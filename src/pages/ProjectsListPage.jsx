@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckCircle2, Clock, Compass, Layers } from 'lucide-react';
 import Header from '../components/Header';
@@ -16,13 +16,17 @@ const TABS = [
 const ProjectsListPage = () => {
   const [activeTab, setActiveTab] = useState('all');
 
+  useEffect(() => {
+    document.title = 'Projects | Tulasi Foundation';
+  }, []);
+
   // Count items per category
   const counts = useMemo(() => {
     return {
       all: mockProjects.length,
-      ongoing: mockProjects.filter((p) => (p.category || '').toLowerCase() === 'ongoing').length,
-      upcoming: mockProjects.filter((p) => (p.category || '').toLowerCase() === 'upcoming').length,
-      completed: mockProjects.filter((p) => (p.category || '').toLowerCase() === 'completed').length,
+      ongoing: mockProjects.filter((p) => ((p.category || p.statusCategory) || '').toLowerCase() === 'ongoing').length,
+      upcoming: mockProjects.filter((p) => ((p.category || p.statusCategory) || '').toLowerCase() === 'upcoming').length,
+      completed: mockProjects.filter((p) => ((p.category || p.statusCategory) || '').toLowerCase() === 'completed').length,
     };
   }, []);
 
@@ -30,12 +34,12 @@ const ProjectsListPage = () => {
   const filteredProjects = useMemo(() => {
     if (activeTab === 'all') return mockProjects;
     return mockProjects.filter(
-      (project) => (project.category || '').toLowerCase() === activeTab
+      (project) => ((project.category || project.statusCategory) || '').toLowerCase() === activeTab
     );
   }, [activeTab]);
 
   return (
-    <div className="min-h-screen bg-[#f7f4ed]">
+    <div className="min-h-screen bg-[#f7f4ed] text-[#102c1c]">
       <Header />
 
       <main>
