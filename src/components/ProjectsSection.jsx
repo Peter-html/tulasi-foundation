@@ -42,7 +42,7 @@ const ProjectsSection = () => {
           <div
             role="tablist"
             aria-label="Project status filter"
-            className="flex items-center gap-8 sm:gap-12 overflow-x-auto no-scrollbar"
+            className="flex items-center justify-center gap-8 sm:gap-12 overflow-x-auto no-scrollbar"
           >
             {TABS.map((tab) => {
               const isActive = activeStatus === tab.id;

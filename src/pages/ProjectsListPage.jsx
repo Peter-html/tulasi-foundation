@@ -1,24 +1,61 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CheckCircle2, Clock, Compass, Layers } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
 import { mockProjects } from '../data/mockProjects';
 
 const TABS = [
-  { id: 'all', label: 'All Projects', icon: Layers },
-  { id: 'ongoing', label: 'Ongoing', icon: Clock },
-  { id: 'upcoming', label: 'Upcoming', icon: Compass },
-  { id: 'completed', label: 'Completed', icon: CheckCircle2 },
+  {
+    id: 'ongoing',
+    label: 'ONGOING PROJECTS',
+    titleWord: 'Ongoing',
+    description:
+      "Plotted communities currently under development — secure your plot early in Coimbatore's fastest-growing corridors.",
+  },
+  {
+    id: 'upcoming',
+    label: 'UPCOMING PROJECTS',
+    titleWord: 'Upcoming',
+    description:
+      'Prime upcoming plotted communities and villas designed for superior long-term growth and living.',
+  },
+  {
+    id: 'completed',
+    label: 'COMPLETED PROJECTS',
+    titleWord: 'Completed',
+    description:
+      'Successfully delivered masterplanned communities and homes handed over to happy homeowners.',
+  },
+  {
+    id: 'all',
+    label: 'ALL PROJECTS',
+    titleWord: 'Portfolio',
+    description:
+      'Explore our complete portfolio of live constructions, upcoming concepts, and delivered communities.',
+  },
 ];
 
 const ProjectsListPage = () => {
-  const [activeTab, setActiveTab] = useState('all');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const stageParam = searchParams.get('stage')?.toLowerCase();
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (stageParam && TABS.some((t) => t.id === stageParam)) {
+      return stageParam;
+    }
+    return 'ongoing';
+  });
 
   useEffect(() => {
     document.title = 'Projects | Tulasi Foundation';
   }, []);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setSearchParams({ stage: tabId }, { replace: true });
+  };
 
   // Count items per category
   const counts = useMemo(() => {
@@ -36,6 +73,10 @@ const ProjectsListPage = () => {
     return mockProjects.filter(
       (project) => ((project.category || project.statusCategory) || '').toLowerCase() === activeTab
     );
+  }, [activeTab]);
+
+  const currentTabInfo = useMemo(() => {
+    return TABS.find((t) => t.id === activeTab) || TABS[0];
   }, [activeTab]);
 
   return (
@@ -85,60 +126,66 @@ const ProjectsListPage = () => {
         </section>
 
         {/* =========================================================
-            PROJECT DIRECTORY: 3 Options (Ongoing, Upcoming, Completed)
+            PROJECT DIRECTORY: Centered Tabs (Ongoing, Upcoming, Completed)
             ========================================================= */}
         <section id="project-directory" className="scroll-mt-24 px-6 py-20 md:px-10 md:py-28 lg:px-14">
           <div className="mx-auto max-w-[1500px]">
-            {/* Header & Filter Controls */}
-            <div className="mb-12 flex flex-col justify-between gap-8 border-b border-[#102c1c]/15 pb-8 lg:flex-row lg:items-end">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#1d6b3e]">
-                  Portfolio Directory
-                </p>
-                <h2 className="font-display mt-2 text-4xl font-light tracking-[-0.05em] text-[#102c1c] md:text-5xl lg:text-6xl">
-                  Explore by project stage.
-                </h2>
-                <p className="mt-3 max-w-xl text-sm leading-6 text-[#6c786f]">
-                  Navigate through our live constructions, upcoming concepts, and completed communities.
-                  Hover over any project image to stream aerial footage.
-                </p>
-              </div>
+            {/* Centered Heading & Subheading */}
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="font-display text-4xl font-light tracking-[-0.04em] text-[#102c1c] sm:text-5xl lg:text-6xl">
+                Our <span className="font-bold text-[#102c1c]">{currentTabInfo.titleWord}</span> Projects
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-[#5c6860] md:text-base">
+                {currentTabInfo.description}
+              </p>
+            </div>
 
-              {/* Filter Tabs: Ongoing, Upcoming, Completed (+ All) */}
-              <div className="flex flex-wrap items-center gap-2 rounded-full border border-[#102c1c]/10 bg-white/70 p-1.5 shadow-sm backdrop-blur-md">
+            {/* Centered Filter Tabs Bar: Ongoing, Upcoming, Completed (+ All) */}
+            <div className="mt-10 mb-14 border-b border-[#102c1c]/15">
+              <div
+                role="tablist"
+                aria-label="Project stage filter"
+                className="flex items-center justify-center gap-1 sm:gap-4 md:gap-8 overflow-x-auto no-scrollbar"
+              >
                 {TABS.map((tab) => {
-                  const Icon = tab.icon;
                   const isActive = activeTab === tab.id;
                   const count = counts[tab.id];
 
                   return (
                     <button
                       key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`relative flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-colors duration-200 ${
-                        isActive ? 'text-white' : 'text-[#102c1c]/70 hover:text-[#102c1c]'
+                      role="tab"
+                      id={`tab-${tab.id}`}
+                      aria-controls={`tabpanel-${tab.id}`}
+                      aria-selected={isActive}
+                      onClick={() => handleTabChange(tab.id)}
+                      className={`relative px-4 sm:px-6 py-3.5 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-[0.16em] sm:tracking-[0.2em] whitespace-nowrap transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-t-md ${
+                        isActive
+                          ? 'bg-[#1d6b3e]/10 text-[#1d6b3e]'
+                          : 'text-[#4b5563] hover:text-[#102c1c] hover:bg-[#102c1c]/[0.03]'
                       }`}
                     >
-                      {isActive && (
-                        <motion.div
-                          layoutId="activeFilterPill"
-                          className="absolute inset-0 rounded-full bg-[#102c1c] shadow-md"
-                          transition={{ type: 'spring', stiffness: 450, damping: 32 }}
-                        />
-                      )}
                       <span className="relative z-10 flex items-center gap-2">
-                        <Icon size={14} className={isActive ? 'text-[#86efac]' : 'text-[#102c1c]/50'} />
                         <span>{tab.label}</span>
                         <span
-                          className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${
+                          className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold transition-colors ${
                             isActive
-                              ? 'bg-white/20 text-white'
-                              : 'bg-[#102c1c]/5 text-[#102c1c]/60'
+                              ? 'bg-[#1d6b3e] text-white'
+                              : 'bg-[#102c1c]/8 text-[#102c1c]/60'
                           }`}
                         >
                           {count}
                         </span>
                       </span>
+
+                      {/* Active Underline Bar */}
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeDirectoryTabUnderline"
+                          className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#1d6b3e]"
+                          transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                        />
+                      )}
                     </button>
                   );
                 })}
