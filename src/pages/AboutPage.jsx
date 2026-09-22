@@ -109,39 +109,52 @@ const AboutPage = () => {
         </section>
 
         {/* =========================================================
-            SECTION 1: ARCHED AMBASSADOR PHOTO WITH SEAMLESS FADE
-            (Direct replica of Screenshot 1 visual layout)
+            SECTION 1: TULASI PLANT IN SAND WITH LEFT TEXT OVERLAY
+            (Expansive hero banner filling the screen gracefully)
         ========================================================= */}
-        <section className="relative px-4 sm:px-6 md:px-10 lg:px-14">
-          <div className="mx-auto max-w-5xl">
-            {/* Arched Photo Frame with Asymmetrical Radius & Seamless Bottom Gradient */}
+        <section className="relative px-3 sm:px-6 md:px-10 lg:px-12">
+          <div className="mx-auto max-w-[1440px]">
+            {/* Arched Frame with Asymmetrical Curve & Shadow */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.97, y: 20 }}
+              initial={{ opacity: 0, scale: 0.98, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative mx-auto overflow-hidden rounded-tl-[140px] sm:rounded-tl-[200px] md:rounded-tl-[280px] rounded-tr-[30px] sm:rounded-tr-[60px] md:rounded-tr-[80px] bg-[#f8f6f0] shadow-[0_20px_60px_rgba(16,44,28,0.08)]"
+              className="relative mx-auto overflow-hidden rounded-tl-[100px] sm:rounded-tl-[180px] md:rounded-tl-[280px] lg:rounded-tl-[340px] rounded-tr-[30px] sm:rounded-tr-[54px] md:rounded-tr-[80px] rounded-b-[28px] sm:rounded-b-[44px] bg-[#f8f6f0] shadow-[0_24px_70px_rgba(16,44,28,0.09)]"
             >
+              {/* Plant emerging from sand on the right side - large immersive height */}
               <img
-                src="/photos/brand-ambassador.jpg"
-                alt="Tulasi Foundation Ambassador"
-                className="h-[360px] sm:h-[480px] md:h-[620px] w-full object-cover object-top"
+                src="/photos/tulasi-plant-sand.jpg"
+                alt="Tulasi Plant Sprouting from Sand"
+                className="h-[460px] sm:h-[560px] md:h-[660px] lg:h-[720px] w-full object-cover object-[75%_center] sm:object-right md:object-center"
               />
 
-              {/* Seamless Bottom Fade Gradient: Dissolves photo directly into white page background */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 sm:h-56 md:h-72 bg-gradient-to-t from-white via-white/75 to-transparent" />
-            </motion.div>
+              {/* Soft ambient tint on the left side to guarantee crisp text legibility without obscuring the sand */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#edd9ba]/90 via-[#edd9ba]/40 to-transparent sm:w-3/5 pointer-events-none" />
 
-            {/* "OUR STORY" Heading overlay/transition below image */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="relative -mt-10 sm:-mt-14 md:-mt-18 z-10 text-left pl-2 sm:pl-6"
-            >
-              <h2 className="text-[clamp(2.4rem,6.5vw,5rem)] font-light tracking-[0.06em] text-[#102c1c]">
-                OUR <span className="font-bold text-[#1d6b3e]">STORY</span>
-              </h2>
+              {/* Subtle Bottom Fade Gradient into White Page Background */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-white/70 via-white/20 to-transparent" />
+
+              {/* Overlay of Words on the Left Side */}
+              <div className="absolute inset-y-0 left-0 z-10 flex flex-col justify-center px-7 sm:px-12 md:px-16 lg:px-20 max-w-md sm:max-w-xl md:max-w-2xl">
+                <motion.div
+                  initial={{ opacity: 0, x: -28 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.9, delay: 0.2 }}
+                >
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#102c1c]/10 border border-[#102c1c]/15 backdrop-blur-md px-3.5 py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.28em] text-[#102c1c] mb-4 sm:mb-5">
+                    <span className="h-2 w-2 rounded-full bg-[#1d6b3e]" />
+                    Rooted In Nature
+                  </span>
+
+                  <h1 className="font-display text-[clamp(2.6rem,6.5vw,5.5rem)] font-light leading-[0.93] tracking-[0.03em] text-[#102c1c]">
+                    OUR <span className="font-bold text-[#1d6b3e]">STORY</span>
+                  </h1>
+
+                  <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-[#203126] font-medium max-w-md sm:max-w-lg">
+                    Like the sacred Tulasi taking root in pure soil, every community we develop is grounded in enduring strength, thoughtful planning, and lasting harmony.
+                  </p>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -150,8 +163,8 @@ const AboutPage = () => {
             SECTION 2: "Who we are?" & DETAILED PILLARS
             (Matches Screenshot 1 & 2 content and typography)
         ========================================================= */}
-        <section className="pt-8 pb-20 md:pb-28 px-4 sm:px-6 md:px-10 lg:px-14">
-          <div className="mx-auto max-w-5xl">
+        <section className="pt-12 sm:pt-16 md:pt-20 pb-20 md:pb-28 px-4 sm:px-6 md:px-10 lg:px-14">
+          <div className="mx-auto max-w-6xl">
             {/* Section Heading */}
             <motion.h3
               initial={{ opacity: 0, y: 20 }}
