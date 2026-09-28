@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+const STATS = [
+  { value: '12+', label: 'LANDMARK PROJECTS' },
+  { value: '1200+', label: 'VILLA PLOTS' },
+  { value: '1000+', label: 'HAPPY CUSTOMERS' },
+  { value: '50 Lakhs+', label: 'SQ.FT DELIVERED' },
+  { value: '10 Lakhs+', label: 'SQ.FT IN PIPELINE' },
+];
+
 const AboutTeaserSection = () => {
   return (
     <section
@@ -37,6 +45,31 @@ const AboutTeaserSection = () => {
                 </span>
               </Link>
             </div>
+          </div>
+        </div>
+
+        {/* Key Metrics / Counter Bar (Matches reference: Landmark, Villa Plots, Happy Customers, Sq.Ft Delivered, Sq.Ft in Pipeline) */}
+        <div className="mt-14 sm:mt-16 pt-10 sm:pt-12 border-t border-[#102c1c]/10">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-y-8 divide-y md:divide-y-0 md:divide-x divide-[#102c1c]/10">
+            {STATS.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className={`flex flex-col items-center justify-center text-center px-3 sm:px-4 pt-4 md:pt-0 ${
+                  index === 4 ? 'col-span-2 md:col-span-1' : ''
+                }`}
+              >
+                <span className="font-display text-3xl sm:text-4xl lg:text-[2.6rem] font-medium tracking-tight text-[#102c1c]">
+                  {stat.value}
+                </span>
+                <span className="mt-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[#55635a]">
+                  {stat.label}
+                </span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

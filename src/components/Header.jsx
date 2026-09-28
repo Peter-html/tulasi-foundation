@@ -36,6 +36,20 @@ const Header = () => {
     }
   };
 
+  const handleStandardClick = (e) => {
+    e.preventDefault();
+    setOpen(false);
+    if (onHome) {
+      const element = document.querySelector('#standard');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.pushState(null, '', '#standard');
+      }
+    } else {
+      navigate('/#standard');
+    }
+  };
+
   const handleEnquireClick = (e) => {
     e.preventDefault();
     setOpen(false);
@@ -110,6 +124,22 @@ const Header = () => {
             Projects
           </Link>
 
+          <a
+            href={onHome ? '#living' : '/#living'}
+            onClick={handleLivingClick}
+            className={`text-xs sm:text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text}`}
+          >
+            Offerings
+          </a>
+
+          <a
+            href={onHome ? '#standard' : '/#standard'}
+            onClick={handleStandardClick}
+            className={`text-xs sm:text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text}`}
+          >
+            Why Tulasi
+          </a>
+
           <Link
             to="/about"
             onClick={() => setOpen(false)}
@@ -119,14 +149,6 @@ const Header = () => {
           >
             About
           </Link>
-
-          <a
-            href={onHome ? '#living' : '/#living'}
-            onClick={handleLivingClick}
-            className={`text-xs sm:text-sm font-medium transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1d6b3e] rounded-sm ${text}`}
-          >
-            Living
-          </a>
         </div>
 
         {/* Action Controls & Mobile Toggle */}
@@ -219,7 +241,16 @@ const Header = () => {
                 onClick={handleLivingClick}
                 className="border-b border-black/10 py-4 text-2xl font-medium text-[#102c1c] flex items-center justify-between"
               >
-                <span>Living</span>
+                <span>What We Offer</span>
+                <ArrowUpRight size={20} className="opacity-40" />
+              </a>
+
+              <a
+                href={onHome ? '#standard' : '/#standard'}
+                onClick={handleStandardClick}
+                className="border-b border-black/10 py-4 text-2xl font-medium text-[#102c1c] flex items-center justify-between"
+              >
+                <span>Why Tulasi (The Standard)</span>
                 <ArrowUpRight size={20} className="opacity-40" />
               </a>
 

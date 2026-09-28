@@ -30,6 +30,9 @@ const Footer = () => (
               <a className="block hover:text-[#1d6b3e] transition-colors" href="/#living">
                 Plots, Villas & Apts
               </a>
+              <a className="block hover:text-[#1d6b3e] transition-colors" href="/#standard">
+                The Tulasi Standard
+              </a>
             </div>
           </div>
 

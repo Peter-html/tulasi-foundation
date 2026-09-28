@@ -36,15 +36,13 @@ const AboutUsSection = () => {
               <div className="absolute bottom-5 left-5 rounded-full bg-[#fffdf8]/92 px-4 py-2 text-xs font-semibold text-[#102c1c] backdrop-blur">Real site photography</div>
             </div>
 
-            {/* Company Statistics (Placeholders marked clearly for easy updating) */}
+            {/* Company Statistics */}
             <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[28px] bg-[#102c1c]/10 sm:grid-cols-4">
               {[
-                { value: '10+', label: 'Years of Experience', note: 'Established presence' },
-                { value: '4', label: 'Current Projects', note: 'In Tamil Nadu' },
-                // PLACEHOLDER: Replace '500+' with verified customer count when available
-                { value: '500+', label: 'Happy Customers', note: 'Resident community' },
-                // PLACEHOLDER: Replace '25+' with verified units delivered count when available
-                { value: '25+', label: 'Plots / Homes Delivered', note: 'Quality spaces built' },
+                { value: '12+', label: 'Landmark Projects', note: 'Established presence' },
+                { value: '1200+', label: 'Villa Plots', note: 'Plotted developments' },
+                { value: '1000+', label: 'Happy Customers', note: 'Resident community' },
+                { value: '50 Lakhs+', label: 'Sq.Ft Delivered', note: 'Quality spaces built' },
               ].map((stat) => (
                 <div key={stat.label} className="bg-[#fffdf8] p-6 md:p-7">
                   <span className="font-display text-4xl font-light text-[#1d6b3e] md:text-5xl">{stat.value}</span>

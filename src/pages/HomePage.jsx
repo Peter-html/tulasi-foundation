@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import AboutTeaserSection from '../components/AboutTeaserSection';
 import ServicesSection from '../components/ServicesSection';
+import TulasiStandardSection from '../components/TulasiStandardSection';
 import FeaturedProjectsSection from '../components/FeaturedProjectsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
@@ -49,10 +50,13 @@ const HomePage = () => {
           {/* 2. Small About Teaser */}
           <AboutTeaserSection />
 
-          {/* 3. Living / Services */}
+          {/* 3. What We Offer (Plots, Villas, Apartments) */}
           <ServicesSection />
 
-          {/* 4. Featured Projects Teaser */}
+          {/* 4. The Tulasi Standard (Trust & Credibility) */}
+          <TulasiStandardSection />
+
+          {/* 5. Featured Projects Teaser */}
           <FeaturedProjectsSection />
 
           {/* 5. Contact / Enquire */}
