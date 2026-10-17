@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const Header = () => {
+const Header = ({ forceSolid = false }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
@@ -19,7 +19,7 @@ const Header = () => {
 
   useEffect(() => setOpen(false), [location.pathname]);
 
-  const solid = !onHome || scrolled;
+  const solid = forceSolid || !onHome || scrolled;
   const text = solid ? 'text-[#102c1c]' : 'text-white';
 
   const handleLivingClick = (e) => {

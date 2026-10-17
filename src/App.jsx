@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import InProgressPage from './pages/InProgressPage';
 import AboutPage from './pages/AboutPage';
 import ProjectsListPage from './pages/ProjectsListPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
@@ -13,7 +14,8 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<InProgressPage />} />
+        <Route path="/home-preview" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/projects" element={<ProjectsListPage />} />
         <Route path="/project/:projectId" element={<ProjectDetailPage />} />
